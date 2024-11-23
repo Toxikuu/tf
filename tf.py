@@ -28,7 +28,7 @@ def get_packages():
     tarballs = []
 
     directory = "/sources"
-    tarexts = [".tar.xz", ".tar.gz", ".tar.bz2", ".tgz", ".txz", ".tbz"]
+    tarexts = ["tar", ".tar.xz", ".tar.gz", ".tar.bz2", ".tgz", ".txz", ".tbz"]
     for _, _, files in os.walk(directory):
         for file in files:
             if ".patch" in file:
