@@ -28,14 +28,12 @@ def get_packages():
     tarballs = []
 
     directory = "/sources"
-    tarexts = ["tar", ".tar.xz", ".tar.gz", ".tar.bz2", ".tgz", ".txz", ".tbz"]
     for _, _, files in os.walk(directory):
         for file in files:
             if ".patch" in file:
                 patches.append(file)
-            for ext in tarexts:
-                if ext in file:
-                    tarballs.append(file)
+            if ".t" in file and "z" in file: # potentially less robust than tarexts but much simpler
+                tarballs.append(file)
 
     return f"{len(tarballs)} tarballs, {len(patches)} patches"
 
