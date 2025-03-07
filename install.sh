@@ -3,11 +3,11 @@
 LIBDIR="/usr/lib/tf"
 
 # checks
-[ $EUID -ne 0 ] && { echo "Run this as root." >&2; exit 1; }
+[[ $EUID -ne 0 ]] && { echo "Run this as root." >&2; exit 1; }
 
-[ -e tf.py ] || { echo "Could not find tf.py. Are you running install.sh from the extracted source directory?"; exit 1; }
+[[ -e tf.py ]] || { echo "Could not find tf.py. Are you running install.sh from the extracted source directory?"; exit 1; }
 
-[ -e "$LIBDIR" ] && {
+[[ -e "$LIBDIR" ]] && {
   read -p "$LIBDIR exists. Would you like to overwrite it? (y/n) " response
 
   case "$response" in
