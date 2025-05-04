@@ -24,18 +24,35 @@ def center_align(text, ansi_lengths):
 # this function is custom to how my system is set up, so you may want to adjust
 # the sources directory or the logic
 def get_packages():
-    patches = []
-    tarballs = []
+    patches = 0
+    tarballs = 0
 
-    directory = "/sources"
+    directory = "/var/cache/to/sources"
     for _, _, files in os.walk(directory):
         for file in files:
             if file.endswith(("patch", "diff")):
-                patches.append(file)
-            if ".t" in file and "z" in file: # potentially less robust than tarexts but much simpler
-                tarballs.append(file)
+                patches += 1
+            elif is_tarball(file):
+                tarballs += 1
 
-    return f"{len(tarballs)} tarballs, {len(patches)} patches"
+    return f"{tarballs} tarballs, {patches} patches"
+
+
+def is_tarball(file):
+    endings = (
+        ".tar.gz",
+        ".tar.bz2",
+        ".tar.xz",
+        ".tar.zst",
+        ".tar.lz",
+        ".tar.lzma",
+        ".tgz",
+        ".tbz2",
+        ".txz",
+        ".tlz"
+    )
+
+    return file.endswith(endings)
 
 
 def get_cpu():
