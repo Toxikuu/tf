@@ -30,7 +30,7 @@ def get_packages():
     directory = "/sources"
     for _, _, files in os.walk(directory):
         for file in files:
-            if ".patch" in file:
+            if file.endswith(("patch", "diff")):
                 patches.append(file)
             if ".t" in file and "z" in file: # potentially less robust than tarexts but much simpler
                 tarballs.append(file)
