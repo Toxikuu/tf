@@ -21,8 +21,8 @@ def center_align(text, ansi_lengths):
     return text.center(terminal_width)
 
 
-# this function is custom to how my system is set up, so you may want 
-# to adjust the sources directory or the logic
+# this function is custom to how my system is set up, so you may want to adjust
+# the sources directory or the logic
 def get_packages():
     patches = []
     tarballs = []
