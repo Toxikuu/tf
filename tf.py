@@ -27,9 +27,10 @@ def get_packages():
     patches = 0
     tarballs = 0
 
-    directory = "/var/cache/to/sources"
+    directory = "/sources"
     for _, _, files in os.walk(directory):
         for file in files:
+            file = file.lower()
             if file.endswith(("patch", "diff")):
                 patches += 1
             elif is_tarball(file):
