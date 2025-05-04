@@ -54,8 +54,8 @@ def get_cpu():
 def get_mem():
     m = psutil.virtual_memory()
 
-    total = m.total / 1024**3
-    used = m.used / 1024**3
+    total = m.total / 1000**3
+    used = m.used / 1000**3
     return f"{used:.2f} / {total:.2f} GB"
 
 
